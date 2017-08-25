@@ -1,0 +1,6 @@
+int isatty (int filedes)
+
+Function
+
+  This function returns 1 if filedes is a file descriptor associated with an open terminal device, and 0 otherwise.
+  If a file descriptor is associated with a terminal, you can get its associated file name using the ttyname function.

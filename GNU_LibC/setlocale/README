@@ -1,0 +1,50 @@
+                        How Programs Set the Locale
+
+  A C program inherits its locale environment variables when it starts up. This happens
+automatically. However, these variables do not automatically control the locale used by the
+library functions, because ISO C says that all programs start by default in the standard ‘C’
+locale. To use the locales specified by the environment, you must call setlocale. Call it
+as follows:
+	setlocale (LC_ALL, "");
+to select a locale based on the user choice of the appropriate environment variables.
+You can also use setlocale to specify a particular locale, for general use or for a specific
+category.
+The symbols in this section are defined in the header file ‘locale.h’.
+	char * setlocale (int category, const char *locale)          
+	Function
+The function setlocale sets the current locale for category category to locale. A list
+of all the locales the system provides can be created by running
+	locale -a
+  If category is LC_ALL, this specifies the locale for all purposes. The other possible
+values of category specify an single purpose (see Section 7.3 [Categories of Activities
+that Locales Affect], page 162).
+  You can also use this function to find out the current locale by passing a null pointer
+as the locale argument. In this case, setlocale returns a string that is the name of
+the locale currently selected for category category.
+  The string returned by setlocale can be overwritten by subsequent calls, so you
+should make a copy of the string (see Section 5.4 [Copying and Concatenation],
+page 81) if you want to save it past any further calls to setlocale. (The standard
+library is guaranteed never to call setlocale itself.)
+  You should not modify the string returned by setlocale. It might be the same string
+that was passed as an argument in a previous call to setlocale. One requirement is
+that the category must be the same in the call the string was returned and the one
+when the string is passed in as locale parameter.164
+
+  When you read the current locale for category LC_ALL, the value encodes the entire
+combination of selected locales for all categories. In this case, the value is not just a
+single locale name. In fact, we don’t make any promises about what it looks like. But
+if you specify the same “locale name” with LC_ALL in a subsequent call to setlocale,
+it restores the same combination of locale selections.
+To be sure you can use the returned string encoding the currently selected locale at a
+later time, you must make a copy of the string. It is not guaranteed that the returned
+pointer remains valid over time.
+  When the locale argument is not a null pointer, the string returned by setlocale
+reflects the newly-modified locale.
+  If you specify an empty string for locale, this means to read the appropriate environ-
+ment variable and use its value to select the locale for category.
+If a nonempty string is given for locale, then the locale of that name is used if possible.
+If you specify an invalid locale name, setlocale returns a null pointer and leaves the
+
+  Portability Note: Some ISO C systems may define additional locale categories, and
+future versions of the library will do so. For portability, assume that any symbol beginning
+with ‘LC_’ might be defined in ‘locale.h’.

@@ -1,0 +1,18 @@
+   char * textdomain (const char *domainname)
+   Function
+  The textdomain function sets the default domain, which is used in all future gettext
+calls, to domainname. Please note that dgettext and dcgettext calls are not influ-
+enced if the domainname parameter of these functions is not the null pointer.
+  Before the first call to textdomain the default domain is messages. This is the name
+specified in the specification of the gettext API. This name is as good as any other
+name. No program should ever really use a domain with this name since this can
+only lead to problems.
+  The function returns the value which is from now on taken as the default domain. If
+the system went out of memory the returned value is NULL and the global variable
+errno is set to ENOMEM. Despite the return value type being char * the return string
+must not be changed. It is allocated internally by the textdomain function.
+  If the domainname parameter is the null pointer no new default domain is set. Instead
+the currently selected default domain is returned.
+  If the domainname parameter is the empty string the default domain is reset to its
+initial value, the domain with the name messages. This possibility is questionable to
+use since the domain messages really never should be used.
