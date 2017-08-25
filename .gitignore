@@ -1,0 +1,5 @@
+# Ignore list
+
+*.o
+
+hello
