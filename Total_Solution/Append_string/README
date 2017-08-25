@@ -1,0 +1,6 @@
+Usage-
+Append a stirng.
+
+Compile command:
+$> gcc main.c -o a
+$> ./a

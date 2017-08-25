@@ -1,0 +1,4 @@
+Compile command: gperf -t -L C first.gpref > main.c
+
+
+Refer: http://www.ibm.com/developerworks/cn/linux/l-gperf.html

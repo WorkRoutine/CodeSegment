@@ -1,0 +1,28 @@
+   == Invert a single list ==
+
+After builded a single list, we invert it. The core code is:
+
+struct node *np;
+struct node *nextp = NULL;
+struct node *prevp = NULL;
+
+do {
+	nextp = np->next;
+	np->next = prevp;
+	prevp = np;
+	np = nextp;
+} while (np);
+
+1. When we input a head of list, we should set np as head->next firstly.
+   It will start with first trust node.
+   If we use a head to manage single list, we should set next node of
+   head as 'prevp' when the inveration has finished. eg
+     head->next = prevp
+
+2. If we list for each node directly, we can add code as:
+   for (np = prevp; np; np = np->next) 
+         ....
+
+Compile Command:
+$> gcc main.c -o a
+$> ./a

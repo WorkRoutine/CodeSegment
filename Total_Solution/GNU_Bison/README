@@ -1,0 +1,13 @@
+      ========= Use flex and bison ============
+
+1. How to use
+   Pls input commad to compile the source code,type:
+   $> flex token.l 
+   You will get output file "lex.yy.c"
+   $> bison token.y
+   You will get output file "token.tab.c"
+   $> gcc *.c -o a
+   Compile all output file and we get the execute file "a.out".
+   Finally, run the execute file,as follow:
+   $> ./a
+   $> asdf23DFSD

@@ -1,0 +1,40 @@
+%{
+/* C Code for gperf */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+%}
+struct node 
+{
+	char name[20];
+	char ch;
+	int num;
+};
+%%
+"--name", 'n', 40
+"--uname", 'b', 60
+"--by", 'g', 67
+"--hui", 'j', 56
+%%
+int main(int argc, char *argv[])
+{
+	struct node *node;
+	int i;
+
+	for (i = 1; i < argc; i++) {
+		if ((node = in_word_set(argv[i], strlen(argv[i]))) != 0) {
+			switch (node->ch) {
+			case 'n':
+				printf("Argument[%d]:%s value %s\n", i, argv[i], argv[i+1]);
+				i++;
+				break;
+			case 'g':
+				printf("Argument[%d]:%s value %s\n", i, argv[i], argv[i+1]);
+				i++;
+				break;
+			}
+		}
+	}
+
+	return 0;
+}

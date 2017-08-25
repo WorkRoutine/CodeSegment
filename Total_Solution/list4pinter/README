@@ -1,0 +1,27 @@
+               ==== Different pinter loops a single list ====
+  As usual, we use one-level pointer to loop some list.One-level pointer is 
+easy to use, but some situation, we need 2-level pointer to loop list.
+  2-level pointer base on one-level pointer, actually, they are same in some
+situation.The value of 2-level pointer is a 1-level pointer and the address 
+of 1-level pointer is a 2-level pointer,so we can use as follow:
+   struct node {
+      struct node *next;
+   };
+
+   struct node **pointer2;
+   struct node *pointer1;
+
+   struct node head = { .next = NULL};
+
+   pointer1 = head.next;
+   pointer2 = &pointer1;
+   pointer1 = (*pointer2)->next;
+
+So we can loop a single list with 1-level pointer is:
+
+   for (pointer1 = head.next; pointer1; pointer1 = pointer1->next)
+		;
+
+And we can also loop a single list with 2-level pointer is:
+   for (pointer2 = &head.next; *pointer2; pointer2 = &(*pointer2)->next)
+		;

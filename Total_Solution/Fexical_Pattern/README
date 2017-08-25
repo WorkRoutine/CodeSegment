@@ -1,0 +1,21 @@
+      ============= Fexical Patterm ============
+
+How to use demo code:
+1. Pls use command to get output file from "*.l", as follow:
+	flex fex.l
+Then we will get the output file "lex.yy.c".
+2. Compile the C source code, use command:
+	gcc lex.yy.c -o a
+3. Run the execute file.type:
+	#> ./a << EOF
+	#> aaa bbb ccc 999
+	#> EOF
+And then, the terminal will output result:
+	(id=aaa)
+    (id=bbb)
+    (id=ccc)
+	(num=999)
+
+	num = 1, id = 3 
+
+

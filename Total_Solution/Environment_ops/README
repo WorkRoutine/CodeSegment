@@ -1,0 +1,23 @@
+       ==== Environment operation ====
+
+C library offer two function to set and get envrionment, and user can call
+these function to use environment.
+
+Usage:
+1. Add a new environment on current task.
+   putenv(const char *env)
+   Use this function to add a new environment into current task, the argument
+   "env" contain the name of environment and the value you want to set.
+   The format of "env" is "name=value".as:
+   putenv("DEBUG_NAME=Serial");
+
+2. Get the value of environment.
+   char *value = getenv(const char *env_name)
+   Use this function to get the value of environment, the argument "env_name"
+   is name you want, the value of environment will store on "value".as:
+   char *vale = getenv("DEBUG_NAME");
+
+3, Modify the value of environment.
+   putenv(const char *fmt)
+   Use this function to modify a existed environment,the example is:
+   putenv("DEBUG_NAME=USB");

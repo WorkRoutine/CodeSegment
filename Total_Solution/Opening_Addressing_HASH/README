@@ -1,0 +1,8 @@
+   ==== Opening Address HASH ====
+We have different way to build a hash table, such as Opening address hash and 
+separate chaining hash. When we use Opening addresss hash, we need confirm
+the hash table has fixup size and it can try its best to avoid conflict.
+
+Compile Command:
+$> gcc main.c -o a
+$> ./a

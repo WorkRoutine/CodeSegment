@@ -1,0 +1,57 @@
+ 
+    ============ How to use regular express in C ===========
+The program use these function to utilize regular express in C:
+	regcomp(), regexec(), regfree() and regerror()
+
+You should follow 3 steps in C program when you use regular express:
+1. Use regcomp() to compile the regular express.
+2. Use regexec() to match the regular express.
+3. Use regfree() to free regular express when you finish match.
+
+Function describe:
+1. int regcomp(regex_t *compiled, const char *patten, int cflags)
+Compile the specify regular express as specifies data format: regex_t,
+it will increase performance when you match express.
+@regex_t: A structure stored compiled data. "re_nsub" is member of structure 
+          regex_t used counts the number of regular express.
+@pattern: A pointer point the user regular express.
+@cflags:  The flags of regular express. the library offer 4 types:
+          REG_EXTENDED: Match the regular express with extend function.
+		  REG_ICASE: Ignore the upper-case or lower-case when match alphabet.
+		  REG_NOSUB: Ignore result of match.
+		  REG_NEWLINE: Start with '^' and end with '$'.
+
+2. int regexec(regex_t *compiled, char *string, size_t nmatch, 
+			   regmatch_t matchptr[], int eflags)
+Match compiled regular express. return 0 when execute successfully.
+The definition of "regex_t" is:
+typedef struct 
+{
+	regoff_t rm_so;
+	regoff_t rm_eo;
+} regmatch_t;
+"rm_so" is start position of target regular express.
+"rm_eo" is end position of target regular express.
+@compiled: The regular express comiled by regcomp().
+@string:   target string.
+@nmatch:   The length of structure "regmatch_t".
+@matchptr: The pointer point the array of regular express.
+@eflags:   Default have two value,as follow:
+		   REG_NOTBL: No start with '^' when match regular express.
+		   REG_NOTEOL: specify the end of line.
+
+3. void regfree(regex_t *compiled)
+Free a compiled when you finish match regular express or choice other regular 
+express.
+
+4. size_t regerror(int errcode, regex_t *compiled, char *buffer, size_t length)
+Call this function to get error code when you execute failed with regcomp() or
+regexec().
+@errcode:   The error code from regcomp() and regexec().
+@copiled:   The compiled regular express.
+@buffer:    Point the memory that store error information.
+@length:    The size of buffer.
+eg:
+	size_t length = regerror(errcode, compiled, NULL, 0)
+
+Pls refer main.c to understand how to use regular express detail.

@@ -1,0 +1,11 @@
+          ==== Parse variable argument ====
+
+The library offer the function va_start(), va_end() and va_arg() to parse 
+variable argument list.
+The principle is argument list of function will push the stack when we 
+call function, and argment store the stack from high address to low address.
+So, the argument address of first argument is the highest for all arguments.
+And, we only get the address of first argument and the type of variable 
+argument,so we can calculate the address of next argument.
+According this principle, the header file "stdarg.h" offer the macro to 
+achive parse argument.

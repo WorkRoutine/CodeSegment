@@ -1,0 +1,21 @@
+%language=ANSI-C
+%define hash-function-name kconf_id_hash
+%define lookup-function-name kconf_id_lookup
+%define string-pool-name kconf_id_strings
+%compare-strncmp
+%pic
+%struct-type
+struct kconf_id
+{
+	int name;
+	int token;
+	unsigned int flags;
+};
+
+static const struct kconf_id *kconf_id_lookup(register const char *str,
+				register unsigned int len);
+
+%%
+mainmenu,	0, 1
+endmenu,    2, 3
+%%

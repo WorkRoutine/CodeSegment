@@ -1,0 +1,53 @@
+-Usage:
+Usualy use two argument of main() to parse command, if have many argument,
+it's easy confuse to parse argument. On Linux, we can utilize "getopt()",
+"getopt_long" and "getopt_long_only" to parse many command argument.
+
+-Definition:
+#include <unistd.h>
+
+int getopt(int argc, char * const argv[], const char optstring);
+
+extern char *optarg;
+extern int optind, opterr, optopt;
+
+#include <getopt.h>
+
+int getopt_long(int argc, char * const argv[],
+			const char *optstring, 
+			const struct option *longopts, int *longindex);
+
+int getopt_long_only(int argc, char *const argv[],
+			const char *optstring,
+			const struct option *longopts, int *longindex);
+
+-Illustrate:
+1. getopt
+The getopt() has two arguments "argc" and "argv" which is from main() directly.
+And it has third argument "optstring". The format of "optstring" is "ab:cd" etc.
+After passing argument to getopt(), it will check firstly whether the command
+contain specify argument, like "-a", "-b", "-c" and "-d". In order to check 
+argument, you should call getopt time and again. If the specify argument 
+has colon on "optstring" and it need a specify value with passing argument.
+eg:
+         optstring = "a:bcd:"
+command:
+         ./execute -a=100 -b -c -d 200
+2. getopt_long
+The "longopts" points a array that constitute the structure of "option", the 
+definition of "otption" as follow:
+	struct option {
+		const char *name;
+		int has_arg;
+		int *flag;
+		int val;
+	};
+"name": argument's name.
+"has_arg": points out whether argument has value. it's optional:
+	no_argument: indicate argument has not value(eg --name)
+	required_argument: indicate argument must has a vlaue(eg --name Buddy)
+	optional_argument: indicate that value is optional(eg --name or --name Bud)
+"flag": when this pointer is null, getopt_long() will return value of "val" 
+        directly. But it is non-null, "val" will assigment its value to a
+        integer value that is pointed by flag and getopt_long return zero.
+"val": used to indicate the return value when match correct option.  

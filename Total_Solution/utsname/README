@@ -1,0 +1,15 @@
+Function:
+  Get current machine information.
+
+Header:
+  <sys/utsname.h>
+
+Prototype:
+  extern int uname(struct utsname *__name) __THROW;
+
+Argument:
+  @__name: Point to the buffer of system information.
+
+Return:
+  If succeed,reutrn 0.
+  If not,return -1.

@@ -1,0 +1,41 @@
+%{
+/* C code start verbose */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+%}
+struct node {
+	char *name;
+	char ch;
+	int num;
+};
+%%
+"--name",'n',5
+"--love",'l',6
+%%
+int main(int argc, char *argv[])
+{
+	struct node *node;
+	int i;
+
+	for (i = 1; i < argc; i++) {
+		if ((node = in_word_set(argv[i], strlen(argv[i]))) != 0) {
+			switch (node->ch) {
+			case 'n':
+				printf("The name is %s %c %d\n", 
+						node->name, node->ch, node->num);
+				printf("The argument is %s\n", argv[i + 1]);
+				i++;
+				break;
+			case 'l':
+				printf("The love is %s %c %d\n", 
+						node->name, node->ch, node->num);
+				printf("The argument is %s\n", argv[i + 1]);
+				i++;
+				break;
+			}
+		}
+	}
+
+	return 0;
+}
