@@ -1,0 +1,70 @@
+# ------------------------------------
+# Function library
+# ------------------------------------
+
+name=""
+# Chech all source have exist!
+# If not, abort exchange!
+function Source_Check()
+{
+    for file in ${file_array[@]}; do
+        if [ ! -f ${file} ]; then
+            echo "${ROOT}/${file} doesn't exist!"
+            exit 0
+        fi
+    done
+
+    # Change dirent
+    for dirent in ${dirent_array[@]}; do
+        if [ ! -d ${dirent} ]; then
+            echo "${ROOT}/${dirent} doesn't exist!" 
+            exit 0
+        fi
+    done
+}
+
+# Check argument from another scripts
+function argument_check()
+{
+    if [ -z $CURRENT_PROJECT -o -z $LEGACY_PROJECT ]; then
+        echo "Please set valid project!"
+        exit 0
+    fi
+
+    if [ -z $ROOT ]; then
+        echo "Please set valid root path!"
+        exit
+    fi
+}
+
+# Exchange file and dirent
+function Do_Exchange()
+{
+    # Change file
+    for _file in ${file_array[@]}; do
+        _name=${_file##*/}
+        _path=${_file%/*}
+        __newpath=${_path##${ROOT}}
+        _newpath=${__newpath#*/}
+
+        cp ${_file} ${BUFFER}/${LEGACY_PROJECT}/${_newpath}/${_name}
+        echo "PATCH ${BUFFER}/${CURRENT_PROJECT}/${_newpath}/${_name}"
+        cp ${BUFFER}/${CURRENT_PROJECT}/${_newpath}/${_name} ${_file}
+    done
+
+    # Change dirent
+    for _dirent in ${dirent_array[@]}; do
+        _name=${_dirent##*/}
+        _path=${_dirent%/*}
+        __newpath=${_path##${ROOT}}
+        _newpath=${__newpath#*/}
+
+        if [ -d ${BUFFER}/${LEGACY_PROJECT}/${_newpath}/${_name} ]; then
+            rm -rf ${BUFFER}/${LEGACY_PROJECT}/${_newpath}/${_name}
+        fi
+        mv ${_dirent} ${BUFFER}/${LEGACY_PROJECT}/${_newpath}/
+        cp -rfa ${BUFFER}/${CURRENT_PROJECT}/${_newpath}/${_name} ${_dirent}
+    done
+}
+
+# To-do: 

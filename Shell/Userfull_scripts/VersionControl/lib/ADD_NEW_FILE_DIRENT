@@ -1,0 +1,44 @@
+# -----------------------------------------
+#
+#
+echo "Do you want to add new file[Y/N]?"
+read OPTION
+if [ ${OPTION} = "Y" -o ${OPTION} = "y" ]; then
+    SLOOP="1"
+    while [ ${SLOOP} = "1" ]
+    do
+        echo "Please input full path of new file!"
+        read _PATH
+        if [ ! -f ${_PATH} ]; then
+            echo "${PATH} doesn't exist! Please input corrent path!"
+        else
+            echo ${ROOT}/${_PATH} >> ${FILE}
+        fi
+        echo "Do you want continue to add new file[Y/N]"
+        read OPTION
+        if [ ${OPTION} = "N" -o ${OPTION} = "n" ]; then
+            SLOOP=0
+        fi
+    done
+fi
+
+echo "Do you want to add new dirent[Y/N]?"
+read OPTION
+if [ ${OPTION} = "Y" -o ${OPTION} = "y" ]; then
+    SLOOP="1"
+    while [ ${SLOOP} = "1" ]
+    do
+        echo "Please input full path of new dirent!"
+        read _PATH
+        if [ ! -d ${_PATH} ]; then
+            echo "${PATH} doesn't exist! Please input corrent path!"
+        else
+            echo ${ROOT}/${_PATH} >> ${DIRENT}
+        fi
+        echo "Do you want continue to add new DIRENT[Y/N]"
+        read OPTION
+        if [ ${OPTION} = "N" -o ${OPTION} = "n" ]; then
+            SLOOP=0
+        fi
+    done
+fi

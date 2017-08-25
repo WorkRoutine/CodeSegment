@@ -1,0 +1,28 @@
+# --------------------------------
+# Read data from file
+#
+
+i=0
+# Read file
+while read line
+do
+    echo "$line"
+    file_array[${i}]=${line}
+    let i=i+1
+done < $FILE
+
+i=0
+# Read Dirent
+while read line
+do
+    dirent_array[${i}]=${line}
+    let i=i+1
+done < $DIRENT
+
+i=0
+# Read Project
+while read line
+do
+    project_array[${i}]=${line}
+    let i=i+1
+done < $PROJECT

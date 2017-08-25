@@ -1,0 +1,12 @@
+# ----------------------------
+# Used to Set current Version
+if [ ! -f $VERSION ]; then
+    echo "${ORIGIN}" > ${VERSION}
+fi
+LEGACY_PROJECT=`cat ${VERSION}`
+
+if [ ${CURRENT_PROJECT} = ${LEGACY_PROJECT} ]; then
+    exit 0
+fi
+
+echo ${CURRENT_PROJECT} > ${VERSION}

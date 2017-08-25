@@ -1,0 +1,11 @@
+    _project_name=""
+    echo "Please input project name:"
+    read _project_name
+    . ${ROOT}/lib/Input_Operation
+    for _project in ${project_array[@]}; do
+        if [ ${_project_name} != ${_project} ]; then
+            echo ${_project} >> ${ROOT}/lib/.tmp_project
+        fi  
+    done
+    rm ${PROJECT}
+    mv ${ROOT}/lib/.tmp_project ${PROJECT}

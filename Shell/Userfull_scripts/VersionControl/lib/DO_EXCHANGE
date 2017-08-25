@@ -1,0 +1,27 @@
+echo "== Current Project =="
+
+# Get current array
+. ${ROOT}/lib/Input_Operation
+i=0
+for project in ${project_array[@]}; do
+    echo "${i} ${project}"
+    let i=i+1
+done
+read OPTION
+
+let i=i-1
+if [ ${OPTION} -gt ${i} ]; then
+    echo "Please correct option!"
+    exit 0
+fi
+
+CURRENT_PROJECT=${project_array[${OPTION}]}
+
+# Set Current Version
+. ${ROOT}/lib/SetCurrentVersion
+
+Source_Check
+argument_check
+Do_Exchange
+
+. ${ROOT}/lib/HISTORY_NOTE

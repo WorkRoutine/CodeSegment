@@ -1,0 +1,22 @@
+# Current Top Dirent
+ROOT=`pwd`
+FILE=${ROOT}/lib/Control_FILE
+DIRENT=${ROOT}/lib/Control_DIRENT
+PROJECT=${ROOT}/lib/Control_PROJECT
+VERSION=${ROOT}/lib/VERSION
+LEGACY_PROJECT=
+CURRENT_PROJECT=
+BUFFER=${ROOT}/BUFFER
+BUFFER_FILE=${BUFFER}/FILE
+ORIGIN="origin"
+
+i=0
+
+file_array=(
+)
+
+dirent_array=(
+)
+
+project_array=(
+)

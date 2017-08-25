@@ -1,0 +1,33 @@
+    . ${ROOT}/lib/ADD_NEW_FILE_DIRENT
+    . ${ROOT}/lib/Input_Operation
+
+    # Backup file
+    for _file in ${file_array[@]}; do
+        _name=${_file##*/}
+        _path=${_file%/*}
+        __newpath=${_path##${ROOT}}
+        _newpath=${__newpath#*/}
+        if [ ! -f ${BUFFER}/${ORIGIN}/${_newpath}/${_name} ]; then
+            for _project in ${project_array[@]}; do
+                if [ ! -d ${BUFFER}/${_project}/${_newpath} ]; then
+                    mkdir -p ${BUFFER}/${_project}/${_newpath}
+                fi
+                cp -rf ${_file} ${BUFFER}/${_project}/${_newpath}
+            done
+        fi
+    done
+    # Backup dirent
+    for _dirent in ${dirent_array[@]}; do
+        _name=${_dirent##*/}
+        _path=${_dirent%/*}
+        __newpath=${_path##${ROOT}}
+        _newpath=${__newpath#*/}
+        if [ ! -d ${BUFFER}/${ORIGIN}/${_newpath}/${_name} ]; then
+            for _project in ${project_array[@]}; do
+                if [ ! -d ${BUFFER}/${_project}/${_newpath} ]; then
+                    mkdir -p ${BUFFER}/${_project}/${_newpath}
+                fi
+                cp -rf ${_dirent} ${BUFFER}/${_project}/${_newpath}
+            done
+        fi
+    done

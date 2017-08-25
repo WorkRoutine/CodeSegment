@@ -1,0 +1,8 @@
+    if [ ! -d ${ROOT}/BUFFER/HISTORY ]; then
+        mkdir -p ${ROOT}/BUFFER/HISTORY
+    fi
+    echo "Please high-light your change"
+    read modify
+    date1=`date +%Y%m%d`
+    date2=`date +%T`
+    echo ${modify} > ${ROOT}/BUFFER/HISTORY/${date1}_${date2}.his

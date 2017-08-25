@@ -1,0 +1,502 @@
+ [Commands] ls
+ [Describe] ls - list directory contents
+ [SYNOPSIS] ls [OPTION]... [FILE]... 
+
+ [Describe] list directory contents
+ [Commands] ls
+man_ls	README	Usage_ls.sh
+
+ [Describe] do not ignore entries starting with . 
+ [Commands] ls -a
+.  ..  man_ls  README  Usage_ls.sh
+ [Commands] ls --all 
+.  ..  man_ls  README  Usage_ls.sh
+
+ [Describe] do not list implied . and .. 
+ [Commands] ls -A 
+man_ls	README	Usage_ls.sh
+ [Commands] ls --almost-all 
+man_ls	README	Usage_ls.sh
+
+ [Describe] with -l, print the author of each file 
+ [Commands] ls --author -l
+total 40
+-rw-rw-r-- 1 orangepi orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+
+ [Describe] print C-style escapes for nongraphic characters 
+ [Commands] ls -b
+man_ls	README	Usage_ls.sh
+ [Commands] ls --escape 
+man_ls	README	Usage_ls.sh
+
+ [Describe] scale sizes by SIZE before printing them. E.g.,
+ [Describe] '--block-size=M'  prints sizes in units of 1,048,576 bytes. 
+ [Commands] ls -l --block-size=M 
+total 1M
+-rw-rw-r-- 1 orangepi orangepi 1M  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 1M  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 1M  2月 25 09:49 Usage_ls.sh
+ [Commands] ls -l --block-size=K 
+total 40K
+-rw-rw-r-- 1 orangepi orangepi  8K  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12K  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 17K  2月 25 09:49 Usage_ls.sh
+ [Commands] ls -l --block-size=G 
+total 1G
+-rw-rw-r-- 1 orangepi orangepi 1G  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 1G  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 1G  2月 25 09:49 Usage_ls.sh
+ [Commands] ls -l --block-size=512 
+total 80
+-rw-rw-r-- 1 orangepi orangepi 16  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 24  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 33  2月 25 09:49 Usage_ls.sh
+ [Commands] ls -l --block-size=4K 
+total 10
+-rw-rw-r-- 1 orangepi orangepi 2  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 3  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 5  2月 25 09:49 Usage_ls.sh
+
+ [Describe] do not list implied entries ending with ~ 
+ [Commands] ls -B 
+man_ls	README	Usage_ls.sh
+ [Commands] ls --ignore-backups 
+man_ls	README	Usage_ls.sh
+
+ [Describe] with -lt: sort by, and show, ctime (time of last modification of 
+ [Describe] file  status  information)  with -l: show ctime and sort by name 
+ [Describe] otherwise: sort by ctime, newest first 
+ [Commands] ls -c -lt
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+
+ [Describe] list entries by columns 
+ [Commands] ls -C 
+man_ls	README	Usage_ls.sh
+
+ [Describe] colorize the output. WHEN defaults to 'always' or can be 'never' or 'auto'. More info below
+ [Commands] ls --color=always 
+man_ls  README  Usage_ls.sh
+ [Commands] ls --color=never 
+man_ls	README	Usage_ls.sh
+ [Commands] ls --color=auto 
+man_ls  README  Usage_ls.sh
+
+ [Describe] list  directory entries instead of contents, and do not dereferent symbolic links
+ [Commands] ls -d
+.
+ [Commands] ls --directory 
+.
+
+ [Describe] generate output designed for Emacs' dired mode 
+ [Commands] ls -D 
+man_ls	README	Usage_ls.sh
+ [Commands] ls -dired 
+man_ls	README	Usage_ls.sh
+
+ [Describe] do not sort, enable -aU, disable -ls --color 
+ [Commands] ls -f 
+man_ls	Usage_ls.sh  .	..  README
+
+ [Describe] append indicator (one of */=>@|) to entries 
+ [Commands] ls -F
+man_ls	README	Usage_ls.sh*
+ [Commands] ls --classify
+man_ls	README	Usage_ls.sh*
+
+ [Describe] likewise, except do not append '*'
+ [Commands] ls --file-type 
+man_ls	README	Usage_ls.sh
+
+ [Describe] across -x, commas -m, horizontal -x, long -l, single-column  -1, verbose -l, vertical -C
+ [Commands] ls --format=verbose
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+ [Commands] ls --format=long
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+ [Commands] ls --format=horizontal
+man_ls	README	Usage_ls.sh
+ [Commands] ls --format=across
+man_ls	README	Usage_ls.sh
+ [Commands] ls --format=commas
+man_ls, README, Usage_ls.sh
+ [Commands] ls --format=vertical
+man_ls	README	Usage_ls.sh
+
+ [Describe] like -l --time-style=full-iso
+ [Commands] ls --full-time 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779 2017-02-25 09:51:13.527376829 +0800 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168 2017-02-25 09:50:55.315376701 +0800 README
+-rwxr-xr-x 1 orangepi orangepi 16558 2017-02-25 09:49:31.223376111 +0800 Usage_ls.sh
+
+ [Describe] like -l, but do not list owner 
+ [Commands] ls -g
+total 40
+-rw-rw-r-- 1 orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi 16558  2月 25 09:49 Usage_ls.sh
+
+ [Describe] group directories before files 
+ [Commands] ls --group-directories-first 
+man_ls	README	Usage_ls.sh
+
+ [Describe] in a long listing, don't print group names 
+ [Commands] ls -G 
+man_ls	README	Usage_ls.sh
+ [Commands] ls --no-group 
+man_ls	README	Usage_ls.sh
+
+ [Describe] with -l, print sizes in human readable format (e.g., 1K 234M 2G) 
+ [Commands] ls -l -h
+total 40K
+-rw-rw-r-- 1 orangepi orangepi 7.6K  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi  12K  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi  17K  2月 25 09:49 Usage_ls.sh
+ [Commands] ls -l --human-readable 
+total 40K
+-rw-rw-r-- 1 orangepi orangepi 7.6K  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi  12K  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi  17K  2月 25 09:49 Usage_ls.sh
+
+ [Describe] likewise, but use powers of 1000 not 1024 
+ [Commands] ls --si -l
+total 41k
+-rw-rw-r-- 1 orangepi orangepi 7.8k  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi  13k  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi  17k  2月 25 09:49 Usage_ls.sh
+
+ [Describe] follow symbolic links listed on the command line 
+ [Commands] ls -H
+man_ls	README	Usage_ls.sh
+ [Commands] ls --dereference-command-line 
+man_ls	README	Usage_ls.sh
+
+ [Describe] follow each command line symbolic link that points to  a  directory 
+ [Commands] ls --dereference-command-line-symlink-to-dir 
+man_ls	README	Usage_ls.sh
+
+ [Parament] [--hide=PATTERN]
+ [Describe] do  not  list implied entries matching shell PATTERN
+ [Commands] ls --hide=U*  
+man_ls	README
+
+ [Parament] [--indicator-style=WORD]
+ [Describe] append indicator with style WORD to entry names: none (default), slash (-p), file-type (--file-type), classify (-F) 
+ [Commands] ls --indicator-style=none
+man_ls	README	Usage_ls.sh
+ [Commands] ls --indicator-style=slash
+man_ls	README	Usage_ls.sh
+ [Commands] ls --indicator-style=file-type
+man_ls	README	Usage_ls.sh
+ [Commands] ls --indicator-style=classify
+man_ls	README	Usage_ls.sh*
+
+ [Parament] [-i, --inode]
+ [Describe] print the index number of each file
+ [Commands] ls -i
+52050567 man_ls  52050564 README  52050566 Usage_ls.sh
+ [Commands] ls --inode 
+52050567 man_ls  52050564 README  52050566 Usage_ls.sh
+
+ [Parament] [-I, --ignore=PATTERN]
+ [Describe] do not list implied entries matching shell PATTERN
+ [Commands] ls -I.*
+man_ls	README	Usage_ls.sh
+ [Commands] ls --ignore=.*
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-k, --kibibytes]
+ [Describe] use 1024-byte blocks
+ [Commands] ls -k -l
+man_ls	README	Usage_ls.sh
+ [Commands] ls -l --kibibytes
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-l]
+ [Describe] use a long listing format 
+ [Commands] ls -l
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+
+ [Parament] [-L, --dereference]
+ [Describe] when showing file information for a symbolic link, show informa‐
+ [Describe] tion for the file the link references rather than for  the  link itself
+ [Commands] ls -L
+man_ls	README	Usage_ls.sh
+ [Commands] ls --dereference
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-m]
+ [Describe] fill width with a comma separated list of entries
+ [Commands] ls -m
+man_ls, README, Usage_ls.sh
+
+ [Parament] [-n, --numeric-uid-gid]
+ [Describe] like -l, but list numeric user and group IDs
+ [Commands] ls -n
+total 40
+-rw-rw-r-- 1 1000 1000  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 1000 1000 12168  2月 25 09:50 README
+-rwxr-xr-x 1 1000 1000 16558  2月 25 09:49 Usage_ls.sh
+ [Commands] ls --numeric-uid-gid
+total 40
+-rw-rw-r-- 1 1000 1000  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 1000 1000 12168  2月 25 09:50 README
+-rwxr-xr-x 1 1000 1000 16558  2月 25 09:49 Usage_ls.sh
+
+ [Parament] [-N, --literal]
+ [Describe] print  raw entry names (don't treat e.g. control characters specially
+ [Commands] ls -N
+man_ls	README	Usage_ls.sh
+ [Commands] ls --literal
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-o]
+ [Describe] like -l, but do not list group information
+ [Commands] ls -o
+total 40
+-rw-rw-r-- 1 orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi 16558  2月 25 09:49 Usage_ls.sh
+
+ [Parament] [-p, --indicator-style=slash]
+ [Describe] append / indicator to directories
+ [Commands] ls -p
+man_ls	README	Usage_ls.sh
+ [Commands] ls --indicator-style=slash
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-q, --hide-control-chars]
+ [Describe] print ? instead of non graphic characters
+ [Commands] ls -q
+man_ls	README	Usage_ls.sh
+ [Commands] ls --hide-control-chars
+man_ls	README	Usage_ls.sh
+
+ [Parament] [--show-control-chars]
+ [Describe] show non graphic characters as-is (default unless
+ [Describe] program is 'ls' and output is a terminal
+ [Commands] ls --show-control-chars
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-Q, --quote-name]
+ [Describe] enclose entry names in double quotes
+ [Commands] ls -Q
+"man_ls"  "README"  "Usage_ls.sh"
+ [Commands] ls --quote-name
+"man_ls"  "README"  "Usage_ls.sh"
+
+ [Parament] [--quoting-style=WORD]
+ [Describe] use  quoting style WORD for entry names: literal, locale, shell,
+ [Describe] shell-always, c, escape
+ [Commands] ls --quoting-style=literal
+man_ls	README	Usage_ls.sh
+ [Commands] ls --quoting-style=locale
+‘man_ls’  ‘README’  ‘Usage_ls.sh’
+ [Commands] ls --quoting-style=shell
+man_ls	README	Usage_ls.sh
+ [Commands] ls --quoting-style=shell-always
+'man_ls'  'README'  'Usage_ls.sh'
+ [Commands] ls --quoting-style=c
+"man_ls"  "README"  "Usage_ls.sh"
+ [Commands] ls --quoting-style=escape
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-r, --reverse]
+ [Describe] reverse order while sorting
+ [Commands] ls -r
+Usage_ls.sh  README  man_ls
+ [Commands] ls --reverse
+Usage_ls.sh  README  man_ls
+
+ [Parament] [-R, --recursive]
+ [Describe] list subdirectories recursively
+ [Commands] ls -R
+.:
+man_ls	README	Usage_ls.sh
+ [Commands] ls --recursive
+.:
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-s, --size]
+ [Describe] print the allocated size of each file, in blocks
+ [Commands] ls -s
+total 40
+ 8 man_ls  12 README  20 Usage_ls.sh
+ [Commands] ls --size
+total 40
+ 8 man_ls  12 README  20 Usage_ls.sh
+
+ [Parament] [-S]
+ [Describe] sort by file size
+ [Commands] ls -S
+Usage_ls.sh  README  man_ls
+
+ [Parament] [--sort=WORD]
+ [Describe] sort by WORD instead of name: none -U, extension  -X,  size  -S,
+ [Describe] time -t, version -v
+ [Commands] ls --sort=none
+man_ls	Usage_ls.sh  README
+ [Commands] ls --sort=extension
+man_ls	README	Usage_ls.sh
+ [Commands] ls --sort=size
+Usage_ls.sh  README  man_ls
+ [Commands] ls --sort=time
+man_ls	README	Usage_ls.sh
+ [Commands] ls --sort=version
+README	Usage_ls.sh  man_ls
+
+ [Parament] [--time=WORD]
+ [Describe] with  -l,  show time as WORD instead of modification time: atime 
+ [Describe] -u, access -u, use -u, ctime -c, or  status  -c;  use  specified 
+ [Describe] time as sort key if --sort=time 
+ [Commands] ls -l --time=atime 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+ [Commands] ls -l --time=access 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+ [Commands] ls -l --time=use 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+ [Commands] ls -l --time=ctime 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+ [Commands] ls -l --time=status 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+
+ [Parament] [--time-style=STYLE]
+ [Describe] with  -l, show times using style STYLE: full-iso, long-iso, iso, 
+ [Describe] locale, +FORMAT.  FORMAT is interpreted like 'date';  if  FORMAT 
+ [Describe] is  FORMAT1<newline>FORMAT2, FORMAT1 applies to non-recent files 
+ [Describe] and FORMAT2 to recent files; if STYLE is prefixed with 'posix-', 
+ [Describe] STYLE takes effect only outside the POSIX locale 
+ [Commands] ls -l --time-style=full-iso 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779 2017-02-25 09:51:13.527376829 +0800 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168 2017-02-25 09:50:55.315376701 +0800 README
+-rwxr-xr-x 1 orangepi orangepi 16558 2017-02-25 09:49:31.223376111 +0800 Usage_ls.sh
+ [Commands] ls -l --time-style=long-iso 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779 2017-02-25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168 2017-02-25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558 2017-02-25 09:49 Usage_ls.sh
+ [Commands] ls -l --time-style=iso 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779 02-25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168 02-25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558 02-25 09:49 Usage_ls.sh
+ [Commands] ls -l --time-style=locale 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+ [Commands] ls -l --time-style=+20 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779 20 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168 20 README
+-rwxr-xr-x 1 orangepi orangepi 16558 20 Usage_ls.sh
+
+ [Parament] [-t]
+ [Describe] sort by modification time, newest first 
+ [Commands] ls -t
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-T, --tabsize=COLS]
+ [Describe] assume tab stops at each COLS instead of 8 
+ [Commands] ls -T 4 
+man_ls	README	Usage_ls.sh
+ [Commands] ls --tabsize=8  
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-u]
+ [Describe] with  -lt:  sort  by, and show, access time with -l: show access 
+ [Describe] time and sort by name otherwise: sort by access time 
+ [Commands] ls -lt -u 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+
+ [Parament] [-U]
+ [Describe] do not sort; list entries in directory order 
+ [Commands] ls -U 
+man_ls	Usage_ls.sh  README
+
+ [Parament] [-v]
+ [Describe] natural sort of (version) numbers within text
+ [Commands] ls -v 
+README	Usage_ls.sh  man_ls
+
+ [Parament] [-w, --width=COLS]
+ [Describe] assume screen width instead of current value 
+ [Commands] ls -w 3 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+ [Commands] ls --width=3 
+total 40
+-rw-rw-r-- 1 orangepi orangepi  7779  2月 25 09:51 man_ls
+-rw-rw-r-- 1 orangepi orangepi 12168  2月 25 09:50 README
+-rwxr-xr-x 1 orangepi orangepi 16558  2月 25 09:49 Usage_ls.sh
+
+ [Parament] [-x]
+ [Describe] list entries by lines instead of by columns 
+ [Commands] ls -x 
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-X]
+ [Describe] sort alphabetically by entry extension 
+ [Commands] ls -X 
+man_ls	README	Usage_ls.sh
+
+ [Parament] [-Z, --context]
+ [Describe] print any SELinux security context of each file 
+ [Commands] ls -Z
+? man_ls  ? README  ? Usage_ls.sh
+ [Commands] ls --context 
+? man_ls  ? README  ? Usage_ls.sh
+
+ [Parament] [-1]
+ [Describe] list one file per line
+ [Commands] ls -1
+man_ls
+README
+Usage_ls.sh
+
+ [Parament] [--version]
+ [Describe] output version information and exit 
+ [Commands] ls --version 
+ls (GNU coreutils) 8.21
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Richard M. Stallman and David MacKenzie.
+
+

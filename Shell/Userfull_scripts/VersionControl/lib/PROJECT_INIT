@@ -1,0 +1,47 @@
+#!/bin/bash
+# -----------------------------------
+#
+#
+if [ ! -f ${FILE} ]; then
+    touch ${FILE}
+fi
+
+if [ ! -f ${DIRENT} ]; then
+    touch ${DIRENT}
+fi
+
+if [ ! -f ${BUFFER_FILE} ]; then
+    mkdir -p ${BUFFER_FILE}
+fi
+
+if [ ! -f ${PROJECT} ]; then
+    echo "Project doesn't exist! The system will automatic create an original project"
+    echo ${ORIGIN} >> ${PROJECT}
+    . ${ROOT}/lib/ADD_NEW_FILE_DIRENT
+    . ${ROOT}/lib/Input_Operation
+
+    # Copy file
+    for file in ${file_array[@]}; do
+        _name=${file##*/}
+        _path=${file%/*}
+        __newpath=${_path##${ROOT}}
+        _newpath=${__newpath#*/}
+        if [ ! -d ${BUFFER}/${ORIGIN}/${_newpath} ]; then
+            mkdir -p ${BUFFER}/${ORIGIN}/${_newpath}
+        fi
+        cp -rf ${file} ${BUFFER}/${ORIGIN}/${_newpath}
+    done
+    
+    # Copy dirent
+    for dirent in ${dirent_array[@]}; do
+        _name=${dirent##*/}
+        _path=${dirent%/*}
+        __newpath=${_path##${ROOT}}
+        _newpath=${__newpath#*/}
+        if [ ! -d ${BUFFER}/${ORIGIN}/${_newpath} ]; then
+            mkdir -p ${BUFFER}/${ORIGIN}/${_newpath}
+        fi
+        cp -rf ${dirent} ${BUFFER}/${ORIGIN}/${_newpath}
+    done
+    . ${ROOT}/lib/HISTORY_NOTE
+fi

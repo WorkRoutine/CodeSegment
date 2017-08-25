@@ -1,0 +1,19 @@
+    _sloop="1"
+    _project_name=""
+    while [ ${_sloop} = "1" ]
+    do
+        _sloop="0"
+        echo "Please input project name:"
+        read _project_name
+        . ${ROOT}/lib/Input_Operation
+        for _project in ${project_array[@]}; do
+            if [ ${_project_name} = ${_project} ]; then
+                echo "${_project_name} has exist!"
+                _sloop="1"
+            fi
+        done
+    done
+    echo ${_project_name} >> ${PROJECT}
+
+    # Copy legacy file or dirent
+    cp -rfa ${BUFFER}/${ORIGIN} ${BUFFER}/${_project_name}

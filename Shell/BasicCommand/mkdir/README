@@ -1,0 +1,42 @@
+ [Commands] mkdir
+ [Describe] mkdir - make directories 
+ [SYNOPSIS] mkdir [OPTION]... DIRECTORY... 
+
+ [Argument] [-m, --mode=MODE] 
+ [Describe] set file mode (as in chmod), not a=rwx - umask 
+ [Commands] mkdir -v -m 755 Hello_WorldA 
+mkdir: created directory ‘Hello_WorldA’
+ [Commands] mkdir -v --mode= 755 Hello_WorldB 
+mkdir: created directory ‘Hello_WorldB’
+
+ [Argument] [-p, --parents] 
+ [Describe] no error if existing, make parent directories as needed 
+ [Commands] mkdir -v -p Hello_WorldC/A 
+mkdir: created directory ‘Hello_WorldC’
+mkdir: created directory ‘Hello_WorldC/A’
+ [Commands] mkdir -v --parents Hello_WorldD/A 
+mkdir: created directory ‘Hello_WorldD’
+mkdir: created directory ‘Hello_WorldD/A’
+
+ [Argument] [-v, --verbose] 
+ [Describe] print a message for each created directory 
+ [Commands] mkdir -v Hello_WorldE
+mkdir: created directory ‘Hello_WorldE’
+ [Commands] mkdir --verbose Hello_WorldF
+mkdir: created directory ‘Hello_WorldF’
+
+ [Argument] [-Z, --context=CTX] 
+ [Describe] set the SELinux security context of each created directory to CTX
+
+ [Argument] [--version] 
+ [Describe] output version information and exit 
+ [Commands] mkdir --version
+mkdir (GNU coreutils) 8.21
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by David MacKenzie.
+
+
