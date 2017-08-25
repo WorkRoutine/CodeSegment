@@ -1,0 +1,9 @@
+Usage
+	Abort system and print the error information when expression of 
+	assert() is false.
+	It will make your program robust, programer can utilize this function
+	to debug your program.
+
+Compile command:
+$> gcc main.c -o a
+$> ./a

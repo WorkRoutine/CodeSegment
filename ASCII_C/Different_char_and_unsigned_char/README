@@ -1,0 +1,14 @@
+ Different Between unsigned char and char
+
+When you use a char to store a negtive value,
+It will be difference from unsigned char. The range of
+char is [-128, 128] and unsigned char is [255, 255].
+If the highest bit is '1', and it will expand when change
+another type. eg:
+If a char vlaue is 0x80, and it turn into short type,
+high bits will be set 1:
+0x80 -> 0xFF80
+If a unsigned char value is 0x80, and it turn into short type,
+high bits will not be set 1:
+0x80 -> 0x0080
+If the highest bit is '0', and unsigned char is same with char.

@@ -1,0 +1,11 @@
+Usage
+   Rename file name.
+   If the old file exist, we can use rename() to change file name as a new 
+   value.
+
+compile command:
+$> touch oldname.txt
+$> gcc main.c -o a
+$> ./a
+
+oldname-> oldname.txt

@@ -1,0 +1,12 @@
+Prototype:
+	extern char *strncat(char *dest,char *src,int n)
+Argument:
+	@dest: Destation string address.
+	@src:  Source string address.
+	@n:    The number of copied.
+
+Function:
+	Copy the number of @n from @src to @dest
+
+Return:
+	Return the pointer that points to the destation string.

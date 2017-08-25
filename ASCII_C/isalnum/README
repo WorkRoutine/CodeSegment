@@ -1,0 +1,11 @@
+Prototype:
+	int isalnum(int c)
+Argument:
+	@c: a character will be check.
+
+Fcuntion:
+	check a character whether is a number or alpha.
+
+Return:
+	If c is number or alpha,it will reutrn number that not zero.
+	If not,return 0.

@@ -1,0 +1,13 @@
+Prototype:
+     char * strchr(const char *str, int c)
+
+Argument:
+     @str: Search strings.
+	 @c:   Search character.
+
+Function:
+     Get the address of first @c in @str.
+
+Return:
+	 If search the @c in @str, function will return the address of first @c in @str.
+	 If not,function will return NULL.
