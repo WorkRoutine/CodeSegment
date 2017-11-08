@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# Random configure cpux frequency.
+
+CPUDIR="/sys/devices/system/cpu"
+CPUCORE="0 1 2 3 4 5 6 7"
+
+FREQ_ALL="2016000 1800000 1608000 1200000 1128000 1008000 912000 864000 720000 600000 480000"
+
+# setup current cpux frequency
+# @1: the order number of cpu.
+# @2: the value of frequency will be written.
+setup_cpu_freq()
+{
+  if [ -z $2 ]; then
+      echo "Need syntax: setup_cpu_freq cpu_no cpu_freq"
+      return 0
+  fi  
+
+  if [ ! -f ${CPUDIR}/cpu$1/cpufreq/scaling_setspeed ]; then
+      return 0
+  fi
+
+  # Setup frequency
+  echo $2 >  ${CPUDIR}/cpu$1/cpufreq/scaling_setspeed
+  return 1
+}
+
+while true
+do
+    echo "Hello World. Dynamic Configure Frequency"
+    for j in ${CPUCORE}
+    do
+        for i in ${FREQ_ALL}
+        do
+            setup_cpu_freq $j $i
+        done
+    done
+done
