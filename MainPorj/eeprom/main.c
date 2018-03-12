@@ -12,6 +12,19 @@
 #include <getopt.h>
 #include <command.h>
 
+void usage(const char *program_name)
+{
+    int i;
+
+    printf("%s 1.1.1(2018.03.12)\n", program_name);
+    for (i = 0; aup_cmd_list[i].cmdline; i++) {
+        printf("[%d]%s\n", i, aup_cmd_list[i].cmdline);
+        printf("    [usage]    ");
+        printf(aup_cmd_list[i].usage, program_name);
+        printf("\n    [Describe] %s\n", aup_cmd_list[i].desc);
+    }
+}
+
 int main(int argc,char *argv[])
 {
     char *option_read  = NULL;
@@ -67,6 +80,10 @@ int main(int argc,char *argv[])
         default:
             abort();
         }
+    }
+    if (hflag) {
+        usage(argv[0]);
+        return 0;
     }
 
     /* Open I2C-0 */
